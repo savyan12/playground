@@ -28,4 +28,15 @@
       );
     }
   </script>
+  <script>
+    // قراءة باراميترات الرابط
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has("id")) {
+      document.write("<h3>مرحباً " + urlParams.get("first_name") + "</h3>");
+      document.write("<p>Username: @" + urlParams.get("username") + "</p>");
+      document.write(
+        "<img src='" + urlParams.get("photo_url") + "' width='100'>"
+      );
+    }
+  </script>
 </html>
