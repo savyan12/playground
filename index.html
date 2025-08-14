@@ -19,7 +19,6 @@
         console.log("sufyan");
         console.log("Data from Telegram:", user);
 
-        // إرسال بيانات المستخدم للباك
         try {
           let base = "https://backend.quiz-time.com.ly";
           const res = await fetch(base + "/api/users/v1/telegram/register", {
@@ -33,7 +32,6 @@
           console.log("Backend error:", err);
         }
 
-        // إذا حاب تعمل fetch لمكان آخر
         try {
           const params = new URLSearchParams();
           for (let key in user) {
