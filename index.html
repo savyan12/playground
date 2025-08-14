@@ -2,36 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Custom Telegram Login</title>
-    <style>
-      .tg-btn {
-        background-color: #2ca5e0;
-        color: white;
-        border: none;
-        padding: 12px 20px;
-        font-size: 16px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: 0.3s;
-      }
-      .tg-btn:hover {
-        background-color: #1b88b4;
-      }
-    </style>
+    <title>Telegram Login Demo</title>
   </head>
-  <body>
-    <h2>Custom Telegram Login Button</h2>
-    <button class="tg-btn" onclick="loginWithTelegram()">
-      Login with Telegram
-    </button>
+  <body style="font-family: Arial; text-align: center; padding: 20px">
+    <h1>Login with Telegram</h1>
 
-    <script>
-      function loginWithTelegram() {
-        const botId = 8285957922; // حط الـ Bot ID متاعك
-        const origin = encodeURIComponent("https://savyan12.github.io"); // دومين موقعك
-        const url = `https://oauth.telegram.org/auth?bot_id=${botId}&origin=${origin}&embed=1&request_access=write`;
-        window.location.href = url;
-      }
-    </script>
+    <!-- Telegram Widget -->
+    <script
+      async
+      src="https://telegram.org/js/telegram-widget.js?22"
+      data-telegram-login="QTAPPAuthBot"
+      data-size="large"
+      data-onauth="onTelegramAuth"
+      data-request-access="write"
+    ></script>
   </body>
 </html>
