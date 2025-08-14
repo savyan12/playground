@@ -18,6 +18,18 @@
       function onTelegramAuth(user) {
         console.log("Data from Telegram:", user); // اطبعهم في الكونسول
 
+        async function onTelegramAuth(user) {
+          let base = "https://backend.quiz-time.com.ly";
+          fetch(base + "/api/users/v1/telegram/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(user),
+          })
+            .then((res) => res.json())
+            .then((json) => console.log(json))
+            .catch((err) => console.log(err));
+        }
+
         const params = new URLSearchParams(user).toString();
         fetch("/telegram/callback?" + params)
           .then((res) => res.json())
@@ -27,17 +39,4 @@
     </script>
   </body>
 </html>
-<!-- data-telegram-login="QTAPPAuthBot"
-<script>
-  async function onTelegramAuth(user) {
-    let base = "https://backend.quiz-time.com.ly";
-    fetch(base + "/api/users/v1/telegram/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user),
-    })
-      .then((res) => res.json())
-      .then((json) => console.log(json))
-      .catch((err) => console.log(err));
-  }
-</script> -->
+<!-- data-telegram-login="QTAPPAuthBot" -->
