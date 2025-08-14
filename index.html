@@ -9,9 +9,13 @@
   </body>
 
   <script>
-    function onTelegramAuth(user) {
-      console.log(user);
-      console.log("sefo test");
+    async function onTelegramAuth(user) {
+      let base = "https://backend.quiz-time.com.ly";
+      fetch(base + "/api/users/v1/telegram/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user),
+      });
     }
   </script>
   <!-- Telegram Widget -->
