@@ -2,41 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Jonas HTML CSS</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Telegram Login Demo</title>
   </head>
-  <body></body>
-  <script
-    async
-    src="https://telegram.org/js/telegram-widget.js?22"
-    data-telegram-login="QTAPPAuthBot"
-    data-size="medium"
-    data-onauth="onTelegramAuth(user)"
-    data-request-access="write"
-  ></script>
-  <script type="text/javascript">
-    function onTelegramAuth(user) {
-      alert(
-        "Logged in as " +
-          user.first_name +
-          " " +
-          user.last_name +
-          " (" +
-          user.id +
-          (user.username ? ", @" + user.username : "") +
-          ")"
-      );
-    }
-  </script>
-  <script>
-    // قراءة باراميترات الرابط
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has("id")) {
-      document.write("<h3>مرحباً " + urlParams.get("first_name") + "</h3>");
-      document.write("<p>Username: @" + urlParams.get("username") + "</p>");
-      document.write(
-        "<img src='" + urlParams.get("photo_url") + "' width='100'>"
-      );
-    }
-  </script>
+  <body style="font-family: Arial; text-align: center; padding: 20px">
+    <h1>Login with Telegram</h1>
+
+    <!-- Telegram Widget -->
+    <script
+      async
+      src="https://telegram.org/js/telegram-widget.js?22"
+      data-telegram-login="QTAPPAuthBot"
+      data-size="medium"
+      data-onauth="onTelegramAuth"
+      data-request-access="write"
+    ></script>
+
+    <!-- مكان عرض البيانات -->
+    <div id="userInfo" style="margin-top: 20px"></div>
+
+    <script>
+      function onTelegramAuth(user) {
+        console.log(user); // تشوف البيانات في الـ console
+        document.getElementById("userInfo").innerHTML = `
+        <h3>مرحباً ${user.first_name} ${user.last_name || ""}</h3>
+        <p>Username: @${user.username || ""}</p>
+        <img src="${user.photo_url}" width="100" style="border-radius:50%">
+      `;
+      }
+    </script>
+  </body>
 </html>
